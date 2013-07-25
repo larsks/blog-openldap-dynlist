@@ -1,0 +1,17 @@
+# oddbit.com
+dn: dc=oddbit,dc=com
+objectClass: dcObject
+objectClass: organization
+dc: oddbit
+o: The Odd Bit
+
+# people, oddbit.com
+dn: ou=people,dc=oddbit,dc=com
+objectClass: organizationalUnit
+ou: people
+
+# groups, oddbit.com
+dn: ou=groups,dc=oddbit,dc=com
+objectClass: organizationalUnit
+ou: groups
+

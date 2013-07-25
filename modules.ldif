@@ -1,0 +1,4 @@
+dn: cn=modules,cn=config
+objectClass: olcModuleList
+cn: modules
+olcModuleLoad: dynlist

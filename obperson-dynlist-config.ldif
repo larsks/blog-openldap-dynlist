@@ -1,0 +1,5 @@
+dn: olcOverlay=dynlist,olcDatabase={2}hdb,cn=config
+objectClass: olcOverlayConfig
+objectClass: olcDynamicList
+olcOverlay: dynlist
+olcDlAttrSet: obPerson labeledURI obMemberOf

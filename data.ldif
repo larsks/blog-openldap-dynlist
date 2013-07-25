@@ -1,0 +1,99 @@
+# lars, people, oddbit.com
+dn: cn=lars,ou=people,dc=oddbit,dc=com
+cn: lars
+uid: lars
+sn: kellogg-stedman
+uidNumber: 1000
+gidNumber: 1000
+homeDirectory: /home/lars
+objectClass: inetOrgPerson
+objectClass: posixAccount
+objectClass: obPerson
+labeledURI: ldap:///ou=groups,dc=oddbit,dc=com??sub?(&(objectclass=posixgroup)
+ (memberUID=lars))
+
+# user1, people, oddbit.com
+dn: cn=user1,ou=people,dc=oddbit,dc=com
+cn: user1
+sn: testuser
+uid: user1
+uidNumber: 1001
+gidNumber: 1001
+homeDirectory: /home/user1
+labeledURI: ldap:///ou=groups,dc=oddbit,dc=com??sub?(&(objectclass=posixgroup)
+ (memberuid=user1))
+objectClass: inetOrgPerson
+objectClass: obPerson
+objectClass: posixAccount
+
+# user2, people, oddbit.com
+dn: cn=user2,ou=people,dc=oddbit,dc=com
+objectClass: posixAccount
+objectClass: inetOrgPerson
+objectClass: obPerson
+cn: user2
+sn: testuser
+uid: user2
+homeDirectory: /home/user2
+gidNumber: 1002
+uidNumber: 1002
+labeledURI: ldap:///ou=groups,dc=oddbit,dc=com??sub?(&(objectclass=posixgroup)
+ (memberuid=user2))
+
+# user3, people, oddbit.com
+dn: cn=user3,ou=people,dc=oddbit,dc=com
+objectClass: posixAccount
+objectClass: inetOrgPerson
+objectClass: obPerson
+cn: user3
+sn: testuser
+uid: user3
+uidNumber: 1003
+gidNumber: 1003
+homeDirectory: /home/user3
+labeledURI: ldap:///ou=groups,dc=oddbit,dc=com??sub?(&(objectclass=posixgroup)
+ (memberuid=user3))
+
+# lars, groups, oddbit.com
+dn: cn=lars,ou=groups,dc=oddbit,dc=com
+objectClass: posixGroup
+cn: lars
+gidNumber: 1000
+memberUid: lars
+
+# user1, groups, oddbit.com
+dn: cn=user1,ou=groups,dc=oddbit,dc=com
+objectClass: posixGroup
+cn: user1
+gidNumber: 1001
+memberUid: user1
+
+# user2, groups, oddbit.com
+dn: cn=user2,ou=groups,dc=oddbit,dc=com
+objectClass: posixGroup
+cn: user2
+gidNumber: 1002
+memberUid: user2
+
+# user3, groups, oddbit.com
+dn: cn=user3,ou=groups,dc=oddbit,dc=com
+objectClass: posixGroup
+cn: user3
+gidNumber: 1003
+memberUid: user3
+
+# staff, groups, oddbit.com
+dn: cn=staff,ou=groups,dc=oddbit,dc=com
+objectClass: posixGroup
+cn: staff
+gidNumber: 2000
+memberUid: user1
+memberUid: user2
+
+# users, groups, oddbit.com
+dn: cn=users,ou=groups,dc=oddbit,dc=com
+objectClass: groupOfNames
+objectClass: labeledURIObject
+cn: users
+labeledURI: ldap:///ou=people,dc=oddbit,dc=com??sub?(objectclass=inetorgperson)
+
