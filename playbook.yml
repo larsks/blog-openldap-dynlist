@@ -1,0 +1,39 @@
+---
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - docker_container:
+        name: ldap
+        image: osixia/openldap
+        volumes:
+          - .:/data
+        env:
+          LDAP_DOMAIN: example.com
+          LDAP_ORGANISATION: Example Corp
+          LDAP_ADMIN_PASSWORD: admin
+
+    - add_host:
+        name: ldap
+        ansible_connection: docker
+        ansible_python_interpreter: /usr/bin/python2
+
+##
+## LDAP COMMANDS START HERE
+##
+
+- hosts: ldap
+  gather_facts: false
+  tags: [ldap]
+  tasks:
+    - name: set up ldap server
+      script: setup-ldap.sh
+
+    - name: get user1 information
+      command: >-
+        ldapsearch -H ldapi:/// -D cn=admin,dc=example,dc=com
+        -w admin -b ou=people,dc=example,dc=com cn=user1
+      register: user1
+
+    - name: show user1 information
+      debug:
+        msg: "{{ user1.stdout_lines }}"
